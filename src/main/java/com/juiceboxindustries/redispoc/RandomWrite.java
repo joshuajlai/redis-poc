@@ -8,21 +8,16 @@ import java.text.SimpleDateFormat;
 
 class RandomWrite {
 
-    public static void main(String[] args) throws Exception {
+    public void main(String[] args) {
         if (args.length < 2) {
             System.out.println("Usage: java -jar redis-poc.jar <host> <port>");
-            System.exit(1);
         }
         String serverDns = args[0];
         String port = args[1];
-
         RedisClient redisClient = new RedisClient(serverDns, new Integer(port));
         redisClient.connect();
-
-        RandomWrite randomWrite = new RandomWrite();
         while (true) {
-            randomWrite.writeRandomData(redisClient);
-            Thread.sleep(1000);
+            this.writeRandomData(redisClient);
         }
     }
 
