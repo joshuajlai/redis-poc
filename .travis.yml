@@ -1,0 +1,20 @@
+---
+sudo: false
+dist: trusty
+
+language: java
+jdk: [oraclejdk8]
+
+cache:
+  directories:
+    - $HOME/.mvn
+
+# tests
+script: mvn test -B
+
+# build package
+install: mvn package install
+
+email:
+  on_success: never
+  on_failure: never
